@@ -6,6 +6,7 @@ var cors = require('cors');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var router = express.Router();
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -23,6 +24,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(flash());
+app.use(router);
+
+app.use(session({secret:"SFQWSWL"}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+
 
 app.all('/', index);
 app.all('/users*', users);
