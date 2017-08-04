@@ -9,6 +9,14 @@ router.get('/login',function(request,response){
     response.render('loginpage',{user:"",email:request.flash("email")[0],loginError:request.flash('loginError')});
 });
 
+
+router.get('/login/success',function(request,response){
+    response.json({status:"success"});
+});
+router.get('/login/failure',function(request,response){
+    response.json({status:"failure"});
+});
+
 router.post('/login',function(request,response,next){
         console.log("로그인 시도 email : "+request.body.idInput);
         console.log("로그인 시도 email 길이 : "+request.body.idInput.length);
@@ -23,8 +31,8 @@ router.post('/login',function(request,response,next){
             next();
         }
     } , passport.authenticate('login-check',{
-        successRedirect : '/',
-        failureRedirect : '/login',
+        successRedirect : '/login/success',
+        failureRedirect : '/login/failure',
         failureFlash : true
     })
 );
