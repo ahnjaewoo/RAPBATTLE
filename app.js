@@ -14,9 +14,20 @@ var router = express.Router();
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
-
+var config = require('./config/config');
 
 var app = express();
+
+//connect database
+mongoose.connect('mongodb://'+config.account.mongoid+':'+config.account.mongopw+'@ds147902.mlab.com:47902/ahnpersie_db', { useMongoClient: true });
+
+var db = mongoose.connection;
+db.once("open",function(){
+  console.log("DB connected!");
+});
+db.on("error",function (err){
+  console.log("DB ERROR :", err);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -62,6 +73,11 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
+});
+
+var port = process.env.PORT || 3000;
+app.listen(port, function(){
+	console.log("server on");
 });
 
 module.exports = app;
