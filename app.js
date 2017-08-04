@@ -7,6 +7,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
+var passport = require('./config/passport');
 var router = express.Router();
 
 var index = require('./routes/index');

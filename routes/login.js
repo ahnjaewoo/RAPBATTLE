@@ -18,7 +18,7 @@ router.post('/login',function(request,response,next){
             // request.flash("loginError","이메일과 비밀번호를 입력해 주세요");
             // response.redirect('/login');
             response.status(404);
-            response.json({error:"No "})
+            response.json({error:"이메일과 비밀번호를 입력해 주세요"});
         } else {
             next();
         }
