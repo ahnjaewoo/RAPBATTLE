@@ -14,9 +14,9 @@ router.post('/login',function(request,response,next){
         console.log("로그인 시도 email 길이 : "+request.body.idInput.length);
         if(request.body.idInput.length===0||request.body.pwInput.length===0)
         {
-            request.flash("email",request.body.idInput);
-            request.flash("loginError","이메일과 비밀번호를 입력해 주세요");
-            response.redirect('/login');
+            // request.flash("email",request.body.idInput);
+            // request.flash("loginError","이메일과 비밀번호를 입력해 주세요");
+            // response.redirect('/login');
         } else {
             next();
         }
