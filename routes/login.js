@@ -2,12 +2,12 @@ var express = require("express");
 var router = express.Router();
 var passport = require('../config/passport');
 
-router.get('/login',function(request,response){
-    if(request.user)
-    response.render('loginpage',{user:request.user,email:request.flash("email")[0],loginError:request.flash('loginError')});
-    else
-    response.render('loginpage',{user:"",email:request.flash("email")[0],loginError:request.flash('loginError')});
-});
+// router.get('/login',function(request,response){
+//     if(request.user)
+//     response.render('loginpage',{user:request.user,email:request.flash("email")[0],loginError:request.flash('loginError')});
+//     else
+//     response.render('loginpage',{user:"",email:request.flash("email")[0],loginError:request.flash('loginError')});
+// });
 
 
 router.get('/login/success',function(request,response){

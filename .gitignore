@@ -47,7 +47,6 @@ jspm_packages
 .yarn-integrity
 
 # config data
-config.js
 
 #crawler
 crawling
