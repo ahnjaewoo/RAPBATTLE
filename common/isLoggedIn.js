@@ -6,7 +6,9 @@ function isLoggedIn(req,res,next)
     {
         return next();
     }
-    res.redirect('/');
+    res.json({
+        success:false
+    });
 }
 
 module.exports = isLoggedIn;
