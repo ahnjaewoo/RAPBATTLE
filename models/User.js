@@ -8,7 +8,6 @@ var userSchema = mongoose.Schema({
     email :{type:String, require:true,unique:true},
     nickname :{type:String, require:true,unique:true},
     password :{type:String, require:true},
-    course :{type:Array},
     loginedAt:{type:Date, default:Date.now},
     createdAt:{type:Date, default:Date.now}
 });

@@ -29,13 +29,16 @@ router.post('/users',checkUserRegValidation,function(req,res,next){
 // //    });
 // });
 
-// router.get('/users/show',isLoggedIn,function(req,res){
-// //    User.findById(req.params.id,function(err,user){ 우리는 모든 유저의 값을 가지고 있기 때문이당 ㅎ_ㅎ
-// //        if(err) return res.json({success:false,message:err});
-//         console.log("show 호출");
-//         res.render("users/show",{user:req.user});
-// //    });
-// });
+router.get('/users/show',isLoggedIn,function(req,res){
+//    User.findById(req.params.id,function(err,user){ 우리는 모든 유저의 값을 가지고 있기 때문이당 ㅎ_ㅎ
+//        if(err) return res.json({success:false,message:err});
+    console.log("show 호출");
+    res.json({
+        email :req.user.email,
+        nickname :req.user.nickname
+    });
+//    });
+});
 
 
 
