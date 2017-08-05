@@ -7,6 +7,7 @@ var rapSchema = mongoose.Schema({
   uid : {type: String, require:true},
   lyricid : {type: Number, require: true, default: 0},
   like : {type: Array},
+  lyric :{type:String}
 });
 
 var Rap = mongoose.model('rap',rapSchema);
