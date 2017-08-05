@@ -174,21 +174,21 @@ function checkUserRegValidation(req,res,next){
             console.log(req.body.idInput+"을 찾습니다");
             if(req.body.pwInput.length<6)
             {
-                req.flash("passwordError","비밀번호 6자리 이상 입력해 주세요.");
+                req.flash("errormsg","비밀번호 6자리 이상 입력해 주세요.");
                 isValid=false;
                 callback(null,isValid);
                 return ;
             }
             if(!validateNick(req.body.nicknameInput))
             {
-                req.flash("nicknameError","영어 소문자와 숫자로 된 4~20자리의 닉네임을 입력 해 주세요");
+                req.flash("errormsg","영어 소문자와 숫자로 된 4~20자리의 닉네임을 입력 해 주세요");
                 isValid=false;
                 callback(null,isValid);
                 return;
             }
             if(!validateEmail(req.body.idInput))
             {
-                req.flash("emailError","올바른 이메일 형식을 입력 해 주세요.");
+                req.flash("errormsg","올바른 이메일 형식을 입력 해 주세요.");
                 isValid=false;
                 callback(null,isValid);
                 return;
@@ -197,7 +197,7 @@ function checkUserRegValidation(req,res,next){
                 function(err,user){
                     if(user){
                         isValid=false;
-                        req.flash("emailError","이미 있는 이메일 입니다.");
+                        req.flash("errormsg","이미 있는 이메일 입니다.");
                     }
 
                     callback(null,isValid);
@@ -208,7 +208,7 @@ function checkUserRegValidation(req,res,next){
                 function(err,user){
                     if(user){
                         isValid=false;
-                        req.flash("nicknameError","이미 있는 닉네임 입니다.");
+                        req.flash("errormsg","이미 있는 닉네임 입니다.");
                     }
                     callback(null,isValid);
                 }
@@ -218,7 +218,7 @@ function checkUserRegValidation(req,res,next){
             if(isValid){
                 return next();
             } else {
-                res.redirect("back");
+                res.json({success:false,message:req.flash('errormsg')[0]});
             }
         }
     );
