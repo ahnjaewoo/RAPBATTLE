@@ -9,6 +9,21 @@ router.get('/rap', function (req, res) {
     });
 });
 
+router.post('/rap/find', function (req, res) {
+    var query={};
+    if(req.body.uid){
+        query={uid:req.body.uid};
+    }
+    if(req.body.topic){
+        query={topic:req.body.topic};
+    }
+
+    Rap.find(query,function (err, raps) {
+        if (err) return res.json({success: false, message: err});
+        res.json(raps);
+    });
+});
+
 router.post('/rap', function (req, res) {
     req.body.lyric = req.body.lyric?req.body.lyric:"";
     Rap.create({
