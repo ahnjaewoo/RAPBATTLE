@@ -57,7 +57,11 @@ app.use(passport.session());
 app.all('/', index);
 app.all('/users*', users);
 app.all('/login*', login);
-app.all('/rap*', rap);
+app.all('/topic*', topic);
+app.all('/logout',function(request,response){
+    request.logout();
+    response.json({success:true});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
