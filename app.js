@@ -57,7 +57,7 @@ app.use(passport.session());
 app.all('/', index);
 app.all('/users*', users);
 app.all('/login*', login);
-app.all('/topic*', topic);
+app.all('/rap*', rap);
 app.all('/logout',function(request,response){
     request.logout();
     response.json({success:true});
